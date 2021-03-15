@@ -204,6 +204,36 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &612836820
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 612836821}
+  m_Layer: 0
+  m_Name: Firepoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &612836821
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 612836820}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.278, y: -0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1504734416}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &753349607
 GameObject:
   m_ObjectHideFlags: 0
@@ -350,6 +380,7 @@ GameObject:
   - component: {fileID: 1504734420}
   - component: {fileID: 1504734419}
   - component: {fileID: 1504734418}
+  - component: {fileID: 1504734421}
   m_Layer: 0
   m_Name: Robot_idle 1
   m_TagString: Untagged
@@ -434,11 +465,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1504734413}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.56, y: 0.696, z: 0}
+  m_LocalPosition: {x: -0.75, y: 0.696, z: 0}
   m_LocalScale: {x: 5.6955256, y: 5.131335, z: 1}
   m_Children:
   - {fileID: 753349608}
   - {fileID: 1747957782}
+  - {fileID: 612836821}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -531,6 +563,21 @@ MonoBehaviour:
   OnCrouchEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1504734421
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1504734413}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d398be3b5cb28a44ae80cbf666d3696, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Firepoint: {fileID: 612836821}
+  bulletPrefab: {fileID: 7346962062712598383, guid: 5434018e2a5f16b4884dd856bd1dd154,
+    type: 3}
 --- !u!1 &1747957781
 GameObject:
   m_ObjectHideFlags: 0
@@ -637,8 +684,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2115162231}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.06, y: -0.016, z: 0}
-  m_LocalScale: {x: 0.6823791, y: 0.89058447, z: 1}
+  m_LocalPosition: {x: 0.055, y: -0.016, z: 0}
+  m_LocalScale: {x: 0.8178767, y: 0.89058447, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
