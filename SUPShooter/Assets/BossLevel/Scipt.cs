@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Scipt2 : MonoBehaviour
+public class Scipt : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
