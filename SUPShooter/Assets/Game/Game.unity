@@ -152,9 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 786b756f76ef1f44ca1436009e753a4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  iLevelToLoad: 0
-  sLevelToLoad: PhilipsBana
-  useIntegerToLoadLevel: 0
+  nextScene: 0
 --- !u!61 &4126367
 BoxCollider2D:
   m_ObjectHideFlags: 0
