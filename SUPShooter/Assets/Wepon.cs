@@ -62,10 +62,7 @@ public class Wepon : MonoBehaviour
             timeToSpawnEffect = Time.time + 1 / effectSpawnRate;
         }
 
-        Debug.DrawLine (firePointPosition, (mousePosition-firePointPosition) * 100, Color.cyan) ;
 
-
-        Debug.DrawLine(firePointPosition, hit.point, Color.red);
 
         
 
