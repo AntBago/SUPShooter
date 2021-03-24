@@ -5,99 +5,36 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 
 {
-    public float moveSpeed = 4f;
-    //public float fireBallSpeed = 7f;
-    Rigidbody2D rb;
- 
-    Vector2 moveDirection;
-    bool facingRight = false;
-    public GameObject explosion;
-    private Transform player;
-    
+    public float speed;
 
-    void Awake()
-    {
-        rb = GetComponent<Rigidbody2D>();
-        player = GameObject.FindGameObjectWithTag("Player").transform;
-     
-    }
-    // Use this for initialization
+    private Transform player;
+    private Vector2 target;
+    
     void Start()
     {
-        moveDirection = (player.transform.position - transform.position).normalized * moveSpeed;
-        rb.velocity = new Vector2(moveDirection.x, moveDirection.y);
-        Destroy(gameObject, 2f);
-
-        if (player.transform.position.x > transform.position.x)
-        {
-            Flip();
-        }
+        player = GameObject.FindGameObjectWithTag("Player").transform;
+        target = new Vector2(player.position.x, player.position.y);
     }
 
-    private void Update()
+    
+    void Update()
     {
-        if (player == null)
+        transform.position = Vector2.MoveTowards(transform.position, target, speed * Time.deltaTime);
+        if (transform.position.x == target.x && transform.position.y == target.y)
         {
-            return;
+            DestroyProjectile();
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    void OnTriggerEnter2D(Collider2D other)
     {
-        if (collision.gameObject.tag == "Player")
+        if (other.CompareTag("Player"))
         {
-            Instantiate(explosion, transform.position, transform.rotation);
-            Debug.Log("Hit");
-            Destroy(gameObject);
+            DestroyProjectile();
         }
-        if (collision.gameObject.tag == "ground")
-        {
-            Instantiate(explosion, transform.position, transform.rotation);
-            Debug.Log("Hit the ground");
-            Destroy(gameObject);
-        }
-
     }
-    void Flip()
+    void DestroyProjectile()
     {
-        facingRight = !facingRight;
-        Vector3 theScale = transform.localScale;
-        theScale.x *= -1;
-        transform.localScale = theScale;
+        Destroy(gameObject);
     }
-
-
-
-    //public float speed;
-
-    //private Transform player;
-    //private Vector2 target;
-
-    //void Start()
-    //{
-    //    player = GameObject.FindGameObjectWithTag("Player").transform;
-    //    target = new Vector2(player.position.x, player.position.y);
-    //}
-
-
-    //void Update()
-    //{
-    //    transform.position = Vector2.MoveTowards(transform.position, target, speed * Time.deltaTime);
-    //    if (transform.position.x == target.x && transform.position.y == target.y)
-    //    {
-    //        DestroyProjectile();
-    //    }
-    //}
-
-    //void OnTriggerEnter2D(Collider2D other)
-    //{
-    //    if (other.CompareTag("Player"))
-    //    {
-    //        DestroyProjectile();
-    //    }
-    //}
-    //void DestroyProjectile()
-    //{
-    //    Destroy(gameObject);
-    //}
 }
