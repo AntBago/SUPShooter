@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Game/Game.unity
     guid: 18920408f9a9b134290db2da9174480b
+  - enabled: 1
+    path: Assets/Game/PhilipsBana.unity
+    guid: 759016cbaf66e95459b416762945784d
   m_configObjects: {}
