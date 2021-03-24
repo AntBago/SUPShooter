@@ -5,14 +5,14 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 
 {
-    public float speed;
 
+    public float moveSpeed = 4f;
+    //public float fireBallSpeed = 7f;
+    Rigidbody2D rb;
+    Vector2 moveDirection;
+    bool facingRight = false;
+    public GameObject explosion;
     private Transform player;
-<<<<<<< Updated upstream
-    private Vector2 target;
-    
-=======
-    public int Damage = 10;
 
     void Awake()
     {
@@ -20,36 +20,33 @@ public class Projectile : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player").transform;
     }
     // Use this for initialization
->>>>>>> Stashed changes
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").transform;
-        target = new Vector2(player.position.x, player.position.y);
-    }
+        moveDirection = (player.transform.position - transform.position).normalized * moveSpeed;
+        rb.velocity = new Vector2(moveDirection.x, moveDirection.y);
+        Destroy(gameObject, 2f);
 
-    
-    void Update()
-    {
-        transform.position = Vector2.MoveTowards(transform.position, target, speed * Time.deltaTime);
-        if (transform.position.x == target.x && transform.position.y == target.y)
+        if (player.transform.position.x > transform.position.x)
         {
-            DestroyProjectile();
+            Flip();
         }
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    private void Update()
     {
-        if (other.CompareTag("Player"))
+        if (player == null)
         {
-            DestroyProjectile();
+            return;
         }
-<<<<<<< Updated upstream
-=======
+    }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
         if (collision.gameObject.tag == "Player")
         {
-            collision.GetComponent<EnemyHealth>().curHealth -= Damage;
-
+            Instantiate(explosion, transform.position, transform.rotation);
+            Debug.Log("Hit");
+            Destroy(gameObject);
         }
         if (collision.gameObject.tag == "ground")
         {
@@ -58,10 +55,47 @@ public class Projectile : MonoBehaviour
             Destroy(gameObject);
         }
 
->>>>>>> Stashed changes
     }
-    void DestroyProjectile()
+    void Flip()
     {
-        Destroy(gameObject);
+        facingRight = !facingRight;
+        Vector3 theScale = transform.localScale;
+        theScale.x *= -1;
+        transform.localScale = theScale;
     }
 }
+
+
+
+
+
+
+
+//    void Start()
+//    {
+//        player = GameObject.FindGameObjectWithTag("Player").transform;
+//        target = new Vector2(player.position.x, player.position.y);
+//    }
+
+
+//    void Update()
+//    {
+//        transform.position = Vector2.MoveTowards(transform.position, target, speed * Time.deltaTime);
+//        if (transform.position.x == target.x && transform.position.y == target.y)
+//        {
+//            DestroyProjectile();
+//        }
+//    }
+
+//    void OnTriggerEnter2D(Collider2D other)
+//    {
+//        if (other.CompareTag("Player"))
+//        {
+//            DestroyProjectile();
+//        }
+//    }
+//    void DestroyProjectile()
+//    {
+//        Destroy(gameObject);
+//    }
+//}
