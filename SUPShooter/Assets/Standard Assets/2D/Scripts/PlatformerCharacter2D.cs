@@ -31,10 +31,10 @@ namespace UnityStandardAssets._2D
             m_Anim = GetComponent<Animator>();
             m_Rigidbody2D = GetComponent<Rigidbody2D>();
             playerGraphics = transform.Find("Graphics");
-           // if (playerGraphics == null)
-           // {
-           //     Debug.LogError("fel fel fel child till graphics finns inte");
-          //  }
+            if (playerGraphics == null)
+            {
+                Debug.LogError("fel fel fel child till graphics finns inte");
+            }
         }
 
 
@@ -76,26 +76,26 @@ namespace UnityStandardAssets._2D
             if (m_Grounded || m_AirControl)
             {
                 // Reduce the speed if crouching by the crouchSpeed multiplier
-                move = (crouch ? move*m_CrouchSpeed : move);
+                move = (crouch ? move * m_CrouchSpeed : move);
 
                 // The Speed animator parameter is set to the absolute value of the horizontal input.
                 m_Anim.SetFloat("Speed", Mathf.Abs(move));
 
                 // Move the character
-                m_Rigidbody2D.velocity = new Vector2(move*m_MaxSpeed, m_Rigidbody2D.velocity.y);
+                m_Rigidbody2D.velocity = new Vector2(move * m_MaxSpeed, m_Rigidbody2D.velocity.y);
 
                 // If the input is moving the player right and the player is facing left...
-               // if (move > 0 && !m_FacingRight)
-              //  {
+                if (move > 0 && !m_FacingRight)
+                {
                     // ... flip the player.
-                //    Flip();
-              //  }
-                    // Otherwise if the input is moving the player left and the player is facing right...
-             //   else if (move < 0 && m_FacingRight)
-             //   {
+                    Flip();
+                }
+                // Otherwise if the input is moving the player left and the player is facing right...
+                else if (move < 0 && m_FacingRight)
+                {
                     // ... flip the player.
-                //    Flip();
-              //  }
+                    Flip();
+                }
             }
             // If the player should jump...
             if (m_Grounded && jump && m_Anim.GetBool("Ground"))
@@ -108,15 +108,15 @@ namespace UnityStandardAssets._2D
         }
 
 
-       //  private void Flip()
-       //  {
+        private void Flip()
+        {
             // Switch the way the player is labelled as facing.
-           //  m_FacingRight = !m_FacingRight;
+            m_FacingRight = !m_FacingRight;
 
-            // Multiply the player's x local scale by -1.
-           // Vector3 theScale = playerGraphics.localScale;
-           // theScale.x *= -1;
-            //playerGraphics.localScale = theScale;
-        //}
+            //Multiply the player's x local scale by -1.
+            Vector3 theScale = playerGraphics.localScale;
+            theScale.x *= -1;
+            playerGraphics.localScale = theScale;
+        }
     }
 }
