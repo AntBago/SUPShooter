@@ -536,6 +536,9 @@ MonoBehaviour:
     m_Bits: 51
   BulletTrailPrefab: {fileID: 2140870545597671728, guid: 691094b161e22cd41a9f39ca316450de,
     type: 3}
+  MuzzleFlashPrefab: {fileID: 903052348520435545, guid: 0d78bbce86bb546469c6e1c3f0656a5b,
+    type: 3}
+  effectSpawnRate: 10
 --- !u!212 &306058408
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3573,6 +3576,7 @@ MonoBehaviour:
   lookAheadFactor: 3
   lookAheadReturnSpeed: 0.5
   lookAheadMoveThreshold: 0.1
+  yPosRestriction: -1
 --- !u!1 &1567378938
 GameObject:
   m_ObjectHideFlags: 0
