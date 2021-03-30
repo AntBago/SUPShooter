@@ -8,19 +8,17 @@ public class Wepon : MonoBehaviour
 
     
     public float fireRate = 0;
-    public float Damage = 10;
+    public int Damage = 10;
     public LayerMask whatToHit;
     public Transform BulletTrailPrefab;
     public Transform MuzzleFlashPrefab;
+
 
 
     float timeToSpawnEffect = 0;
     public float effectSpawnRate = 10;
     float timeToFire = 0;
     Transform firePoint;
-
-
-
 
     void Awake()
     {
@@ -60,6 +58,16 @@ public class Wepon : MonoBehaviour
         {
             Effect();
             timeToSpawnEffect = Time.time + 1 / effectSpawnRate;
+        }
+        if (hit.collider != null)
+        {
+            Debug.DrawLine(firePointPosition, hit.point, Color.red);
+            Skeleton skeleton = hit.collider.GetComponent<Skeleton>();
+            if (skeleton != null)
+            {
+                skeleton.DamageSkeleton(Damage);
+                Debug.Log("We hit" + hit.collider.name + "and did" + Damage + "damage");
+            }
         }
 
 
