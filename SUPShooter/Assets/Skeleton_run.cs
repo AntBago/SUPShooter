@@ -25,15 +25,19 @@ public class Skeleton_run : StateMachineBehaviour
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        skeleton.LookAtPlayer();
-
-        Vector2 target = new Vector2(player.position.x, rb.position.y);
-        Vector2 newPos = Vector2.MoveTowards(rb.position, target, speed = Time.fixedDeltaTime);
-        rb.MovePosition(newPos);
-
-       if (Vector2.Distance(player.position, rb.position) <=attackRange)
+        if (player != null)
         {
-            animator.SetTrigger("Attack");
+
+            skeleton.LookAtPlayer();
+
+            Vector2 target = new Vector2(player.position.x, rb.position.y);
+            Vector2 newPos = Vector2.MoveTowards(rb.position, target, speed = Time.fixedDeltaTime);
+            rb.MovePosition(newPos);
+
+            if (Vector2.Distance(player.position, rb.position) <= attackRange)
+            {
+                animator.SetTrigger("Attack");
+            }
         }
     
     }

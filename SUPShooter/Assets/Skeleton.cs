@@ -6,7 +6,27 @@ public class Skeleton : MonoBehaviour
 {
     public Transform player;
 
+    public GameObject deathEffect;
+
     public bool isFlipped = false;
+
+    [System.Serializable]
+    public class SkeletonStats
+    {
+        public int Health = 100;
+    }
+    public SkeletonStats stats = new SkeletonStats();
+
+    public void DamageSkeleton(int damage)
+    {
+        stats.Health -= damage;
+        if (stats.Health <= 0)
+        {
+            GameMaster.KillSkeleton(this);
+
+        }
+    }
+
 
     public void LookAtPlayer()
     {
