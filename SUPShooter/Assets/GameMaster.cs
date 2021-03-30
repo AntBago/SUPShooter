@@ -8,4 +8,10 @@ public class GameMaster : MonoBehaviour
     {
         Destroy(player.gameObject);
     }
+
+    public static void KillSkeleton (Skeleton skeleton)
+    {
+     
+        Destroy(skeleton.gameObject);
+    }
 }
