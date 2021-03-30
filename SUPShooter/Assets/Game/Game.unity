@@ -2418,6 +2418,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 72305111}
+  deathEffect: {fileID: 6244840833128182077, guid: ca86d2b890e1ee949bc817743631e496,
+    type: 3}
   isFlipped: 1
   stats:
     Health: 100
