@@ -30,10 +30,10 @@ public class Skeleton : MonoBehaviour
 
     private void DeathEffect()
     {
-        if(deathEffect != null)
+        if (deathEffect != null)
         {
             GameObject effect = Instantiate(deathEffect, transform.position, Quaternion.identity);
-                Destroy(effect, 1f);
+            Destroy(effect, 1f);
         }
     }
 
