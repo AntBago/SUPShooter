@@ -12,7 +12,6 @@ public class Player : MonoBehaviour
     public PlayerStats playerStats = new PlayerStats();
 
     public int fallBoundary = -20;
-    private int damage;
 
     void Update()
     {
@@ -31,18 +30,8 @@ public class Player : MonoBehaviour
             GameMaster.KillPlayer(this);
 
         }
-
+    }
    
-    }
-    public void OnCollisionEnter(Collision collision)
-    {
-        if (collision.collider.gameObject.CompareTag("opossum"))
-        {
-            playerStats.Health -= damage;
-            Debug.Log("HitOpossum");
-        }
-    }
-
 
 
 }

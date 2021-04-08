@@ -15,24 +15,6 @@ public class Enemy : MonoBehaviour
 
     public Transform player;
 
-
-    public class BossStats
-    {
-        public int Health = 100;
-    }
-    public BossStats stats = new BossStats();
-
-    public void Damage(int damage)
-    {
-        stats.Health -= damage;
-        if (stats.Health <= 0)
-        {
-            Debug.Log("Dead");
-            GameMaster.KillBoss(this);
-
-        }
-    }
-
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
