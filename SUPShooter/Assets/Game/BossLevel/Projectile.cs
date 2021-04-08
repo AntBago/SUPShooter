@@ -7,12 +7,12 @@ public class Projectile : MonoBehaviour
 {
 
     public float moveSpeed = 4f;
-    //public float fireBallSpeed = 7f;
     Rigidbody2D rb;
     Vector2 moveDirection;
     bool facingRight = false;
-    public GameObject explosion;
+   // public GameObject explosion;
     private Transform player;
+    public int Damage = 10;
 
     void Awake()
     {
@@ -38,22 +38,27 @@ public class Projectile : MonoBehaviour
         {
             return;
         }
+
+
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")
         {
-            Instantiate(explosion, transform.position, transform.rotation);
+            collision.GetComponent<Player>().DamagePlayer(Damage);
             Debug.Log("Hit");
             Destroy(gameObject);
         }
         if (collision.gameObject.tag == "ground")
         {
-            Instantiate(explosion, transform.position, transform.rotation);
+           // Instantiate(explosion, transform.position, transform.rotation);
             Debug.Log("Hit the ground");
             Destroy(gameObject);
         }
+     
+ 
 
     }
     void Flip()

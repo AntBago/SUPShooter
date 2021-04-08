@@ -71,8 +71,19 @@ public class Wepon : MonoBehaviour
         }
 
 
+       if (hit.collider != null)
+        {
+            Debug.DrawLine(firePointPosition, hit.point, Color.red);
+            Enemy enemy  = hit.collider.GetComponent<Enemy>();
+            if (enemy != null)
+            {
+                enemy.Damage(Damage);
+                Debug.Log("We hit " + hit.collider.name + "and did " + Damage + "damage");
+            }
+        }
 
-        
+
+
 
     }
     void Effect()
