@@ -6,7 +6,7 @@ public class Skeleton : MonoBehaviour
 {
     public Transform player;
 
-    //public GameObject deathEffect;
+    public GameObject deathEffect;
 
     public bool isFlipped = false;
 
@@ -22,20 +22,20 @@ public class Skeleton : MonoBehaviour
         stats.Health -= damage;
         if (stats.Health <= 0)
         {
-            //DeathEffect();
+            DeathEffect();
             GameMaster.KillSkeleton(this);
 
         }
     }
 
-    //private void DeathEffect()
-    //{
-        //if(deathEffect != null)
-       // {
-           // GameObject effect = Instantiate(deathEffect, transform.position, Quaternion.identity);
-                //Destroy(effect, 1f);
-        //}
-    //}
+    private void DeathEffect()
+    {
+        if(deathEffect != null)
+        {
+            GameObject effect = Instantiate(deathEffect, transform.position, Quaternion.identity);
+                Destroy(effect, 1f);
+        }
+    }
 
 
     public void LookAtPlayer()
