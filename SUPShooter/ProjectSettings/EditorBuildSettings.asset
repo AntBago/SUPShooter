@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/GustavLevel/Game.unity
     guid: 3389b12d321fe8b48903dcefca9a68ab
+  - enabled: 1
+    path: Assets/BossLevel/Game.unity
+    guid: fe692af494113b248851e0dcc7a9a802
   m_configObjects: {}
