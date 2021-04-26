@@ -9,15 +9,15 @@ EditorBuildSettings:
     path: Assets/Menu/Menu.unity
     guid: 637154e0982ff664d9f68c053700ba92
   - enabled: 1
-    path: Assets/Game/Game.unity
+    path: Assets/Game/MattiasLevel.unity
     guid: 18920408f9a9b134290db2da9174480b
   - enabled: 1
     path: Assets/Game/PhilipsBana.unity
     guid: 759016cbaf66e95459b416762945784d
   - enabled: 1
-    path: Assets/GustavLevel/Game.unity
+    path: Assets/Game/GustavLevel.unity
     guid: 3389b12d321fe8b48903dcefca9a68ab
   - enabled: 1
-    path: Assets/BossLevel/Game.unity
+    path: Assets/Game/BossLevel.unity
     guid: fe692af494113b248851e0dcc7a9a802
   m_configObjects: {}
