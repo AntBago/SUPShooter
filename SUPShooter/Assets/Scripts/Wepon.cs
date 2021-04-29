@@ -63,15 +63,22 @@ public class Wepon : MonoBehaviour
         {
             Debug.DrawLine(firePointPosition, hit.point, Color.red);
             Skeleton skeleton = hit.collider.GetComponent<Skeleton>();
+            AlienSpaceship alien = hit.collider.GetComponent<AlienSpaceship>();
             if (skeleton != null)
             {
                 skeleton.DamageSkeleton(Damage);
                 Debug.Log("We hit" + hit.collider.name + "and did" + Damage + "damage");
             }
+            if(alien != null)
+            {
+                alien.DamageAlien(Damage);
+                Debug.Log("We hit" + hit.collider.name + "and did" + Damage + "damage");
+            }
         }
 
 
-       if (hit.collider != null)
+
+        if (hit.collider != null)
         {
             Debug.DrawLine(firePointPosition, hit.point, Color.red);
             Enemy enemy  = hit.collider.GetComponent<Enemy>();
@@ -81,7 +88,7 @@ public class Wepon : MonoBehaviour
                 Debug.Log("We hit " + hit.collider.name + "and did " + Damage + "damage");
             }
         }
-
+      
 
 
 
