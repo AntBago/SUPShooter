@@ -13,13 +13,7 @@ public class CameraShake : MonoBehaviour
         if (mainCam == null)
             mainCam = Camera.main;
     }
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.T))
-        {
-            Shake(0.1f, 0.2f);
-        }
-    }
+    
 
     public void Shake(float amt, float length)
     {

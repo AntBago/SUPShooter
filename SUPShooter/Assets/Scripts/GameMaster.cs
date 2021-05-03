@@ -19,7 +19,7 @@ public class GameMaster : MonoBehaviour
     public int spawnDelay = 2;
 
 
-    //public CameraShake cameraShake;
+    public CameraShake cameraShake;
 
     public IEnumerator _RespawnPlayer()
     {
@@ -59,7 +59,7 @@ public class GameMaster : MonoBehaviour
 
         Transform _clone = Instantiate(_alien.deathParticles, _alien.transform.position, Quaternion.identity) as Transform;
         Destroy(_clone, 5f);
-        //cameraShake.Shake(_alien.shakeAmt,_alien.shakeLength);
+        cameraShake.Shake(_alien.shakeAmt,_alien.shakeLength);
 
         Destroy(_alien.gameObject);
     }
