@@ -57,10 +57,11 @@ public class GameMaster : MonoBehaviour
     public void _KillAlien(AlienSpaceship _alien)
     {
 
-        Transform _clone = Instantiate(_alien.deathParticles, _alien.transform.position, Quaternion.identity) as Transform;
-        Destroy(_clone, 5f);
+        GameObject _clone = Instantiate(_alien.deathParticles.gameObject, _alien.transform.position, Quaternion.identity) as GameObject;
+        Destroy(_clone, 2f);
         cameraShake.Shake(_alien.shakeAmt,_alien.shakeLength);
 
         Destroy(_alien.gameObject);
+        
     }
 }
