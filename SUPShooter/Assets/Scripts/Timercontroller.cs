@@ -16,7 +16,8 @@ public class Timercontroller : MonoBehaviour
 
     private void Awake()
     {
-        instans = this;
+       
+        DontDestroyOnLoad(this.gameObject);
     }
 
     // Start is called before the first frame update
@@ -25,6 +26,7 @@ public class Timercontroller : MonoBehaviour
         timeCounter.text = "Time: 00:00.00";
         timerGoing = false;
         BeginTimer();
+        
     }
 
     public void BeginTimer() 
@@ -60,4 +62,5 @@ public class Timercontroller : MonoBehaviour
     {
         
     }
+  
 }
