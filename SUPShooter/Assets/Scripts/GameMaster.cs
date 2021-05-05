@@ -18,7 +18,10 @@ public class GameMaster : MonoBehaviour
     public Transform spawnPoint;
     public int spawnDelay = 2;
 
-    public IEnumerator RespawnPlayer()
+
+    public CameraShake cameraShake;
+
+    public IEnumerator _RespawnPlayer()
     {
         
         yield return new WaitForSeconds(spawnDelay);
@@ -29,7 +32,7 @@ public class GameMaster : MonoBehaviour
   public static void KillPlayer(Player player)
     {
         Destroy(player.gameObject);
-        gm.StartCoroutine(gm.RespawnPlayer());
+        gm.StartCoroutine(gm._RespawnPlayer());
     }
 
      
@@ -39,10 +42,26 @@ public class GameMaster : MonoBehaviour
      
         Destroy(skeleton.gameObject);
     }
-
+    
     public static void KillBoss(Enemy enemy)
     {
 
         Destroy(enemy.gameObject);
+    }
+
+    public static void KillAlien(AlienSpaceship alien)
+    {
+
+        gm._KillAlien(alien);
+    }
+    public void _KillAlien(AlienSpaceship _alien)
+    {
+
+        GameObject _clone = Instantiate(_alien.deathParticles.gameObject, _alien.transform.position, Quaternion.identity) as GameObject;
+        Destroy(_clone, 2f);
+        cameraShake.Shake(_alien.shakeAmt,_alien.shakeLength);
+
+        Destroy(_alien.gameObject);
+        
     }
 }
