@@ -23,10 +23,13 @@ public class Timercontroller : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
         timeCounter.text = "Time: 00:00.00";
         timerGoing = false;
         BeginTimer();
-        
+
+       
+
     }
 
     public void BeginTimer() 
@@ -37,7 +40,7 @@ public class Timercontroller : MonoBehaviour
     
     }
 
-    private void EndTimer() {
+    public void EndTimer() {
         timerGoing = false;
     
     }
@@ -57,10 +60,20 @@ public class Timercontroller : MonoBehaviour
 
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-  
+
+    //void OnCollisionEnter2D(Collision2D _colInfo)
+    //{
+    //    Player _player = _colInfo.collider.GetComponent<Player>();
+    //    if (_player != null)
+    //    {
+    //        EndTimer();
+    //    }
+
+
+    //}
+
+
+
 }
+  
+
