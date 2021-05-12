@@ -2358,7 +2358,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waves:
   - name: SKELETON INVATION
-    enemy: {fileID: 7431603264795226055, guid: 74a37a75491cfb24e9be7720b752ae00, type: 3}
+    enemy: {fileID: 5352757145647867048, guid: 9cd894079005c494199603ebe0726c6e, type: 3}
     count: 1
     rate: 1
   spawnPoints:
