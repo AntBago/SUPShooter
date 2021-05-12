@@ -66,8 +66,7 @@ public class Timercontroller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // bool myBool = Convert.ToBoolean(lastScene);
-        //myBool = false;
+       
         
          int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         if (currentSceneIndex == 5) {
