@@ -15,31 +15,62 @@ public class Enemy : MonoBehaviour
 
     public Transform player;
 
-
+    [System.Serializable]
     public class BossStats
     {
-        public int Health = 100;
+
+        public int maxHealth = 500;
+
+        private int _curHealth;
+        public int curHealth
+        {
+            get { return _curHealth; }
+            set { _curHealth = Mathf.Clamp(value, 0, maxHealth); }
+        }
+
+        public int damage = 40;
+
+
+
+        public void Init()
+        {
+            curHealth = maxHealth;
+        }
     }
     public BossStats stats = new BossStats();
 
-    public void Damage(int damage)
+    [Header("Optional: ")]
+    [SerializeField]
+    private StatusIndicator statusIndicator;
+
+    public void DamageBoss(int damage)
     {
-        stats.Health -= damage;
-        if (stats.Health <= 0)
+        stats.curHealth -= damage;
+        if (stats.curHealth <= 0)
         {
-            Debug.Log("Dead");
             GameMaster.KillBoss(this);
 
         }
+        if (statusIndicator != null)
+        {
+            statusIndicator.SetHealth(stats.curHealth, stats.maxHealth);
+        }
+
     }
 
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
         timeBtwShots = startTimeBtwShots;
+        stats.Init();
+
+        if (statusIndicator != null)
+        {
+            statusIndicator.SetHealth(stats.curHealth, stats.maxHealth);
+        }
+
+
     }
-
-
     void Update()
     {
         if (Vector2.Distance(transform.position, player.position) > stoppingDistance)
