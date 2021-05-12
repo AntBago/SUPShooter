@@ -7,6 +7,7 @@ public class GameMaster : MonoBehaviour
 
     public static GameMaster gm;
     void Start()
+        
     {
         if(gm== null)
         {
@@ -59,9 +60,9 @@ public class GameMaster : MonoBehaviour
 
         GameObject _clone = Instantiate(_alien.deathParticles.gameObject, _alien.transform.position, Quaternion.identity) as GameObject;
         Destroy(_clone, 2f);
-        cameraShake.Shake(_alien.shakeAmt,_alien.shakeLength);
+        cameraShake.Shake(_alien.shakeAmt, _alien.shakeLength);
 
         Destroy(_alien.gameObject);
-        
+
     }
 }

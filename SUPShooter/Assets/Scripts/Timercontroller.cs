@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System;
+using UnityEngine.SceneManagement;
 
 public class Timercontroller : MonoBehaviour
 {
@@ -13,39 +14,41 @@ public class Timercontroller : MonoBehaviour
     private TimeSpan timePlaying;
     private bool timerGoing;
     private float eladsedTime;
+    //public int lastScene;
+    
 
     private void Awake()
     {
-       
+
         DontDestroyOnLoad(this.gameObject);
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        
         timeCounter.text = "Time: 00:00.00";
         timerGoing = false;
         BeginTimer();
-
-       
+        
 
     }
 
-    public void BeginTimer() 
+    public void BeginTimer()
     {
         timerGoing = true;
         eladsedTime = 0f;
         StartCoroutine(UpdateTimer());
-    
+
     }
 
-    public void EndTimer() {
+    public void EndTimer()
+    {
         timerGoing = false;
-    
+
     }
 
-    private IEnumerator UpdateTimer() {
+    private IEnumerator UpdateTimer()
+    {
         while (timerGoing)
         {
             eladsedTime += Time.deltaTime;
@@ -54,26 +57,26 @@ public class Timercontroller : MonoBehaviour
             timeCounter.text = timePlayingString;
 
             yield return null;
-        
+
         }
 
 
     }
 
+    // Update is called once per frame
+    void Update()
+    {
+       
+        
+         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        if (currentSceneIndex == 5) {
+            EndTimer();
+        }
+     
+    }
 
-    //void OnCollisionEnter2D(Collision2D _colInfo)
-    //{
-    //    Player _player = _colInfo.collider.GetComponent<Player>();
-    //    if (_player != null)
-    //    {
-    //        EndTimer();
-    //    }
-
-
-    //}
-
-
-
+ 
 }
-  
 
+
+  

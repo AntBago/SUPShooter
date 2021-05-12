@@ -10,7 +10,7 @@ public class Enemy : MonoBehaviour
 
     private float timeBtwShots;
     public float startTimeBtwShots;
-    
+
     public GameObject projectile;
 
     public Transform player;
@@ -69,12 +69,8 @@ public class Enemy : MonoBehaviour
             statusIndicator.SetHealth(stats.curHealth, stats.maxHealth);
         }
 
-        
+
     }
-
-
-
-
     void Update()
     {
         if (Vector2.Distance(transform.position, player.position) > stoppingDistance)
