@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System;
+using UnityEngine.SceneManagement;
 
 public class Timercontroller : MonoBehaviour
 {
@@ -13,10 +14,12 @@ public class Timercontroller : MonoBehaviour
     private TimeSpan timePlaying;
     private bool timerGoing;
     private float eladsedTime;
+    //public int lastScene;
+    
 
     private void Awake()
     {
-       
+
         DontDestroyOnLoad(this.gameObject);
     }
 
@@ -27,22 +30,25 @@ public class Timercontroller : MonoBehaviour
         timerGoing = false;
         BeginTimer();
         
+
     }
 
-    public void BeginTimer() 
+    public void BeginTimer()
     {
         timerGoing = true;
         eladsedTime = 0f;
         StartCoroutine(UpdateTimer());
-    
+
     }
 
-    private void EndTimer() {
+    public void EndTimer()
+    {
         timerGoing = false;
-    
+
     }
 
-    private IEnumerator UpdateTimer() {
+    private IEnumerator UpdateTimer()
+    {
         while (timerGoing)
         {
             eladsedTime += Time.deltaTime;
@@ -51,7 +57,7 @@ public class Timercontroller : MonoBehaviour
             timeCounter.text = timePlayingString;
 
             yield return null;
-        
+
         }
 
 
@@ -60,7 +66,17 @@ public class Timercontroller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+       
         
+         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        if (currentSceneIndex == 5) {
+            EndTimer();
+        }
+     
     }
-  
+
+ 
 }
+
+
+  

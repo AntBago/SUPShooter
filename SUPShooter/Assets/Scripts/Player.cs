@@ -8,10 +8,11 @@ public class Player : MonoBehaviour
     [System.Serializable]
     public class PlayerStats
     {
+        
         public int maxHealth = 100;
 
         private int _curHealth;
-        public int curHealth 
+        public int curHealth
         {
             get { return _curHealth; }
             set { _curHealth = Mathf.Clamp(value, 0, maxHealth); }
@@ -23,7 +24,7 @@ public class Player : MonoBehaviour
         }
     }
     public PlayerStats stats = new PlayerStats();
-
+    
     public int fallBoundary = -20;
     [SerializeField]
     private StatusIndicator statusIndicator;
@@ -31,7 +32,7 @@ public class Player : MonoBehaviour
     {
         stats.Init();
 
-        if(statusIndicator == null)
+        if (statusIndicator == null)
         {
             Debug.LogError("No status indicator referenced on player");
         }
@@ -50,13 +51,13 @@ public class Player : MonoBehaviour
         {
             DamagePlayer(999999);
         }
-        
+
     }
 
-    public void DamagePlayer (int damage)
+    public void DamagePlayer(int damage)
     {
         stats.curHealth -= damage;
-        if(stats.curHealth <= 0)
+        if (stats.curHealth <= 0)
         {
             GameMaster.KillPlayer(this);
 
@@ -75,6 +76,5 @@ public class Player : MonoBehaviour
         }
     }
 
-
-
+   
 }
