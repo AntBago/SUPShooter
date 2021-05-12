@@ -53,8 +53,8 @@ public class Wepon : MonoBehaviour
     {
         Vector2 mousePosition = new Vector2(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y);
         Vector2 firePointPosition = new Vector2(firePoint.position.x, firePoint.position.y);
-        RaycastHit2D hit = Physics2D.Raycast(firePointPosition, mousePosition-firePointPosition, 100, whatToHit);
-        if(Time.time >= timeToSpawnEffect)
+        RaycastHit2D hit = Physics2D.Raycast(firePointPosition, mousePosition - firePointPosition, 100, whatToHit);
+        if (Time.time >= timeToSpawnEffect)
         {
             Effect();
             timeToSpawnEffect = Time.time + 1 / effectSpawnRate;
@@ -64,31 +64,24 @@ public class Wepon : MonoBehaviour
             Debug.DrawLine(firePointPosition, hit.point, Color.red);
             Skeleton skeleton = hit.collider.GetComponent<Skeleton>();
             AlienSpaceship alien = hit.collider.GetComponent<AlienSpaceship>();
+            Enemy enemy = hit.collider.GetComponent<Enemy>();
             if (skeleton != null)
             {
                 skeleton.DamageSkeleton(Damage);
                 Debug.Log("We hit" + hit.collider.name + "and did" + Damage + "damage");
             }
-            if(alien != null)
+            if (alien != null)
             {
                 alien.DamageAlien(Damage);
                 Debug.Log("We hit" + hit.collider.name + "and did" + Damage + "damage");
             }
-        }
-
-
-
-        if (hit.collider != null)
-        {
-            Debug.DrawLine(firePointPosition, hit.point, Color.red);
-            Enemy enemy  = hit.collider.GetComponent<Enemy>();
             if (enemy != null)
             {
-                enemy.Damage(Damage);
+                enemy.DamageBoss(Damage);
                 Debug.Log("We hit " + hit.collider.name + "and did " + Damage + "damage");
             }
         }
-      
+
 
 
 
