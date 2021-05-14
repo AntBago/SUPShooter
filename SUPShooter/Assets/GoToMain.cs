@@ -8,5 +8,6 @@ public class GoToMain : MonoBehaviour
     // Start is called before the first frame update
     public void MainMenuButton() {
         SceneManager.LoadScene("Menu");
+        
     }
 }
