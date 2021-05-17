@@ -29,7 +29,6 @@ public class Timercontroller : MonoBehaviour
     void Start()
     {
         timeCounter.text = "Time: 00:00.00";
-        
         timerGoing = false;
         BeginTimer();
         
@@ -143,7 +142,25 @@ public class Timercontroller : MonoBehaviour
             PlayerPrefs.SetFloat(key, bestTimes[i]);
         }
     }
-   
+    void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        // here you can use scene.buildIndex or scene.name to check which scene was loaded
+        if (scene.name == "Menu")
+        {
+            // Destroy the gameobject this script is attached to
+            Destroy(gameObject);
+        }
+    }
 
 }
 
