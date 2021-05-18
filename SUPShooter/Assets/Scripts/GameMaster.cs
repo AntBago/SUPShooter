@@ -65,6 +65,13 @@ public class GameMaster : MonoBehaviour
         Destroy(enemy.gameObject);
     }
 
+    public static void KillBoss2(BossHealth boss)
+    {
+
+        Destroy(boss.gameObject);
+    }
+
+
     public static void KillAlien(AlienSpaceship alien)
     {
 
@@ -80,4 +87,10 @@ public class GameMaster : MonoBehaviour
         Destroy(_alien.gameObject);
 
     }
+    public static void KillEnemyTest(EnemyTest enemyTest)
+    {
+
+        Destroy(enemyTest.gameObject);
+    }
+
 }

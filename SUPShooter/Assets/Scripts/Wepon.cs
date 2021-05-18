@@ -65,6 +65,7 @@ public class Wepon : MonoBehaviour
             Skeleton skeleton = hit.collider.GetComponent<Skeleton>();
             AlienSpaceship alien = hit.collider.GetComponent<AlienSpaceship>();
             Enemy enemy = hit.collider.GetComponent<Enemy>();
+            BossHealth boss = hit.collider.GetComponent<BossHealth>();
             if (skeleton != null)
             {
                 skeleton.DamageSkeleton(Damage);
@@ -78,6 +79,11 @@ public class Wepon : MonoBehaviour
             if (enemy != null)
             {
                 enemy.DamageBoss(Damage);
+                Debug.Log("We hit " + hit.collider.name + "and did " + Damage + "damage");
+            }
+            if (boss != null)
+            {
+                boss.DamageBoss(Damage);
                 Debug.Log("We hit " + hit.collider.name + "and did " + Damage + "damage");
             }
         }
