@@ -43,6 +43,8 @@ public class Player : MonoBehaviour
 
     }
 
+    public bool isAlive = true;
+
     private int damage;
 
     void Update()
@@ -56,17 +58,30 @@ public class Player : MonoBehaviour
 
     public void DamagePlayer(int damage)
     {
+
+       
+
+
+        if (!isAlive)
+        {
+            return;
+        }
         stats.curHealth -= damage;
         if (stats.curHealth <= 0)
         {
+            isAlive = false;
             GameMaster.KillPlayer(this);
 
-        }
-
-        statusIndicator.SetHealth(stats.curHealth, stats.maxHealth);
-
-
     }
+
+    statusIndicator.SetHealth(stats.curHealth, stats.maxHealth);
+
+    } 
+
+        
+
+
+    
     public void OnCollisionEnter(Collision collision)
     {
         if (collision.collider.gameObject.CompareTag("opossum"))
@@ -78,3 +93,5 @@ public class Player : MonoBehaviour
 
    
 }
+
+

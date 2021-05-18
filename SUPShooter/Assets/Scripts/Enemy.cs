@@ -98,6 +98,10 @@ public class Enemy : MonoBehaviour
             timeBtwShots -= Time.deltaTime;
         }
 
-
+        if(stats.curHealth <= 250)
+        {
+            speed = 10;
+            timeBtwShots = -1f;
+        }
     }
 }
