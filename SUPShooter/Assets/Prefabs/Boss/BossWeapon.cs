@@ -8,7 +8,7 @@ public class BossWeapon : MonoBehaviour
 	public int enragedAttackDamage = 40;
 
 	public Vector3 attackOffset;
-	public float attackRange = 1f;
+	public float attackRange = 3f;
 	public LayerMask attackMask;
 
 	public void Attack()

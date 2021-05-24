@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameMaster : MonoBehaviour
 {
@@ -45,10 +46,20 @@ public class GameMaster : MonoBehaviour
     Destroy(player.gameObject);
 
         
+            
+
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        if (currentSceneIndex != 4)
+        {
             gm.StartCoroutine(gm._RespawnPlayer());
 
+        }
+        else
+        {
+            SceneManager.LoadScene("GameOver");
+        }
 
-        
+
     }
 
      
