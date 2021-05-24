@@ -15,7 +15,7 @@ public class Timercontroller : MonoBehaviour
     private bool timerGoing;
     public static float elapsedTime;
     public static List<float> bestTimes = new List<float>();
-    int totalScores = 5; // the total times you want to save
+    int totalScores = 5; 
 
 
     private void Awake()
@@ -78,10 +78,9 @@ public class Timercontroller : MonoBehaviour
         }
      
     }
-    /// <summary>
-    ///  Call this in Awake to load in your data.
-    ///  It checks to see if you have any saved times and adds them to the list if you do.
-    /// </summary>
+
+    //  Call this in Awake to load data.
+    //  checks to see if theres any saved times and adds them to the list if there is.
     public void LoadTimes()
     {
         for (int i = 0; i < totalScores; i++)
@@ -95,18 +94,16 @@ public class Timercontroller : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Call this from your EndTimer method. 
-    /// This will check and see if the time just created is a "best time".
-    /// </summary>
+    // Call from EndTimer method. 
+    // check and see if the time just created is a "best time".
     public void CheckTime(float time)
     {
-        // if there are not enough scores in the list, go ahead and add it
+        // if there are not enough scores in the list, add it
         if (bestTimes.Count < totalScores)
         {
             bestTimes.Add(time);
 
-            // make sure the times are in order from highest to lowest
+            // Sort times from highest to lowest
             bestTimes.Sort((a, b) => b.CompareTo(a));
             SaveTimes();
             
@@ -129,11 +126,9 @@ public class Timercontroller : MonoBehaviour
             }
         }
     }
+    // This is called from CheckTime().
+    // saves the times to PlayerPrefs.
 
-    /// <summary>
-    /// This is called from CheckTime().
-    /// It saves the times to PlayerPrefs.
-    /// </summary>
     public void SaveTimes()
     {
         for (int i = 0; i < bestTimes.Count; i++)
@@ -154,10 +149,10 @@ public class Timercontroller : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        // here you can use scene.buildIndex or scene.name to check which scene was loaded
+        // if scene is menu
         if (scene.name == "Menu")
         {
-            // Destroy the gameobject this script is attached to
+            // Destroy the gameobject (Timer)
             Destroy(gameObject);
         }
     }
