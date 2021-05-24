@@ -6,7 +6,7 @@ public class Projectile : MonoBehaviour
 
 {
 
-    public float moveSpeed = 4f;
+    public float moveSpeed = 2f;
     Rigidbody2D rb;
     Vector2 moveDirection;
     bool facingRight = false;

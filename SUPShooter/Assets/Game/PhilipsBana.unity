@@ -8898,16 +8898,12 @@ MonoBehaviour:
   waves:
   - name: SKELETON INVATION
     enemy: {fileID: 8951290909250467150, guid: 9f7d3827d08ab00409cb2c8a76f58625, type: 3}
-    count: 2
+    count: 5
     rate: 1
   - name: SKELETON INVATION 2.0
     enemy: {fileID: 8951290909250467150, guid: 9f7d3827d08ab00409cb2c8a76f58625, type: 3}
-    count: 3
+    count: 7
     rate: 1.5
-  - name: SKELETON INVATION 3.0
-    enemy: {fileID: 8951290909250467150, guid: 9f7d3827d08ab00409cb2c8a76f58625, type: 3}
-    count: 5
-    rate: 2
   spawnPoints:
   - {fileID: 619912341}
   - {fileID: 789364489}
@@ -9713,12 +9709,12 @@ PrefabInstance:
     - target: {fileID: 7671046962475559607, guid: a19e23c6e0f168c47ae0533c70d34e60,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 10.11
+      value: 37.24
       objectReference: {fileID: 0}
     - target: {fileID: 7671046962475559607, guid: a19e23c6e0f168c47ae0533c70d34e60,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 8.13
+      value: 8.92
       objectReference: {fileID: 0}
     - target: {fileID: 7671046962475559607, guid: a19e23c6e0f168c47ae0533c70d34e60,
         type: 3}
@@ -14427,12 +14423,12 @@ PrefabInstance:
     - target: {fileID: 7671046962475559607, guid: a19e23c6e0f168c47ae0533c70d34e60,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.88
+      value: 97.92
       objectReference: {fileID: 0}
     - target: {fileID: 7671046962475559607, guid: a19e23c6e0f168c47ae0533c70d34e60,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 9.1
+      value: 5.59
       objectReference: {fileID: 0}
     - target: {fileID: 7671046962475559607, guid: a19e23c6e0f168c47ae0533c70d34e60,
         type: 3}
@@ -15188,12 +15184,12 @@ PrefabInstance:
     - target: {fileID: 7671046962475559607, guid: a19e23c6e0f168c47ae0533c70d34e60,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.82
+      value: 74.14
       objectReference: {fileID: 0}
     - target: {fileID: 7671046962475559607, guid: a19e23c6e0f168c47ae0533c70d34e60,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 7.04
+      value: 8.74
       objectReference: {fileID: 0}
     - target: {fileID: 7671046962475559607, guid: a19e23c6e0f168c47ae0533c70d34e60,
         type: 3}

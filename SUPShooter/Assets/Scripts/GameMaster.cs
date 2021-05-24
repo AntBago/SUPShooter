@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameMaster : MonoBehaviour
 {
@@ -26,14 +27,39 @@ public class GameMaster : MonoBehaviour
     {
         
         yield return new WaitForSeconds(spawnDelay);
-        Instantiate(playerPrefab, spawnPoint.position, spawnPoint.rotation);
+
+       // if (gameObject.find("Player") == null)
+        //{
+            Instantiate(playerPrefab, spawnPoint.position, spawnPoint.rotation);
+        //}
+        
         
     }
 
   public static void KillPlayer(Player player)
     {
-        Destroy(player.gameObject);
-        gm.StartCoroutine(gm._RespawnPlayer());
+
+
+
+       
+
+    Destroy(player.gameObject);
+
+        
+            
+
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        if (currentSceneIndex != 4)
+        {
+            gm.StartCoroutine(gm._RespawnPlayer());
+
+        }
+        else
+        {
+            SceneManager.LoadScene("GameOver");
+        }
+
+
     }
 
      
@@ -50,6 +76,13 @@ public class GameMaster : MonoBehaviour
         Destroy(enemy.gameObject);
     }
 
+    public static void KillBoss2(BossHealth boss)
+    {
+
+        Destroy(boss.gameObject);
+    }
+
+
     public static void KillAlien(AlienSpaceship alien)
     {
 
@@ -65,4 +98,10 @@ public class GameMaster : MonoBehaviour
         Destroy(_alien.gameObject);
 
     }
+    public static void KillEnemyTest(EnemyTest enemyTest)
+    {
+
+        Destroy(enemyTest.gameObject);
+    }
+
 }

@@ -58,9 +58,11 @@ public class Enemy : MonoBehaviour
 
     }
 
+   
+
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").transform;
+       player = GameObject.FindGameObjectWithTag("Player").transform;
         timeBtwShots = startTimeBtwShots;
         stats.Init();
 
@@ -98,6 +100,10 @@ public class Enemy : MonoBehaviour
             timeBtwShots -= Time.deltaTime;
         }
 
-
+        if(stats.curHealth <= 250)
+        {
+            speed = 5;
+            timeBtwShots = -1f;
+        }
     }
 }

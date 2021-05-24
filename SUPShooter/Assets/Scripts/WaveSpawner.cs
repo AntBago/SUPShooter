@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class WaveSpawner : MonoBehaviour
-{
+{   //skapar ett enum för spawning waiting och counting
     public enum SpawnState { SPAWNING, WAITING, COUNTING};
     [System.Serializable]
     public class Wave
@@ -14,12 +14,13 @@ public class WaveSpawner : MonoBehaviour
         public float rate;
 
     }
+    //skapar en array av waves
     public Wave[] waves;
 
     private int nextWave = 0;
-
+    //skapar en array av spawnpoints som innehåller transform object i koden som man kan dra ut vart man vill att fienderna ska spawna
     public Transform[] spawnPoints;
-
+    
     public float timeBetweenWaves = 5f;
     private float waveCountdown;
 
@@ -48,7 +49,7 @@ public class WaveSpawner : MonoBehaviour
         
             if(state == SpawnState.WAITING)
             { 
-
+                //kollar ifall alla fiender är dödade
                 if (!EnemyIsAlive())
                 {
                     WaveCompleted();
@@ -59,7 +60,7 @@ public class WaveSpawner : MonoBehaviour
                     return;
                 }
             }
-
+            //räknar ner tills nästa våg våg med fiender kommer
             if(waveCountdown <= 0)
             {
                 if(state != SpawnState.SPAWNING)
@@ -76,7 +77,7 @@ public class WaveSpawner : MonoBehaviour
         }
        
     }
-
+    //när en wave är klarad så kommer nästa tills det inte är några fler
     void WaveCompleted()
     {
         Debug.Log("Wave Completed");
@@ -99,14 +100,15 @@ public class WaveSpawner : MonoBehaviour
 
 
     }
-
+    //en boolian funktion som kollar ifall fienderna lever eller ej
     bool EnemyIsAlive()
     {
         searchCountdown -= Time.deltaTime;
         if(searchCountdown <= 0f)
         {
             searchCountdown = 1f;
-            if (GameObject.FindGameObjectWithTag("Enemy") == null)
+            //kollar ifall det finns nått gameobject med taggen Enemy
+            if (GameObject.FindGameObjectWithTag("Enemy") == null) 
             {
                 return false;
             }
@@ -114,7 +116,7 @@ public class WaveSpawner : MonoBehaviour
         }
         return true;
     }
-
+    //en IEnumerator som ser till att det är "den waven" som spawnar fiender
     IEnumerator SpawnWave(Wave _wave)
     {
         Debug.Log("Spawning Wave: " + _wave.name);
@@ -130,6 +132,8 @@ public class WaveSpawner : MonoBehaviour
 
         yield break;
     }
+
+    // funktion för att spawna fiender random mellan de olika spawnpointsen
     void SpawnEnemy(Transform _enemy)
     {
      
